@@ -1,0 +1,68 @@
+.logo {
+    width: 250px;
+    height: 190px;
+    position: absolute;
+    left: 665px;
+    top: -20px;
+}
+
+.Login {
+    margin: 10px;
+    font-size: 70px;
+    font-weight: bold;
+    position: absolute;
+    top: 200px;
+    left: 665px;
+    color: #FF70A6;
+}
+
+.email {
+    margin: 10px;
+    width: 295px;
+    height: 48px;
+    border-radius: 4px;
+    border-width: 1px;;
+    position: absolute;
+    top: 300px;
+    left: 624px;
+}
+
+.password {
+    margin: 10px;
+    width: 295px;
+    height: 48px;
+    border-radius: 4px;
+    border-width: 1px;;
+    position:absolute;
+    top: 370px;
+    left: 624px;
+}
+
+textarea::placeholder {
+    font-weight: border;
+    color:red;
+}
+
+.button {
+    margin: 10px;
+    width: 297px;
+    height: 48px;
+    position:absolute;
+    top:440px;
+    left:624px;
+    border-radius: 4px;
+    border:none;
+    background-color: #FF70A6;
+    color: white;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.noId{
+    margin: 10px;
+    position:absolute;
+    top:500px;
+    left:699px;
+    background-color: transparent;
+    border: none;
+}
