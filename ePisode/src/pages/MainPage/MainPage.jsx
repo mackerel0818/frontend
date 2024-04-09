@@ -9,7 +9,14 @@ export default function MainPage() {
 
   return (
     <>
-      <div ref={homeRef}>
+      <div
+        ref={homeRef}
+        style={{
+          WebkitUserSelect: 'none' /* Safari */,
+          msUserSelect: 'none' /* Internet Explorer/Edge */,
+          userSelect: 'none' /* Non-prefixed version, currently supported by Chrome, Firefox, and Opera */,
+        }}
+      >
         <Header homeRef={homeRef} aboutRef={aboutRef} contactRef={contactRef} />
         <HomePage />
       </div>
