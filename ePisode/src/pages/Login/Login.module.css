@@ -2,8 +2,12 @@
     width: 250px;
     height: 190px;
     position: absolute;
-    left: 665px;
+    left: 655px;
     top: -20px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .Login {
@@ -14,6 +18,10 @@
     top: 200px;
     left: 665px;
     color: #FF70A6;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .email {
@@ -25,6 +33,10 @@
     position: absolute;
     top: 300px;
     left: 624px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .password {
@@ -36,11 +48,10 @@
     position:absolute;
     top: 370px;
     left: 624px;
-}
-
-textarea::placeholder {
-    font-weight: border;
-    color:red;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .button {
@@ -56,13 +67,21 @@ textarea::placeholder {
     color: white;
     font-weight: bolder;
     font-size: 18px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }
 
 .noId{
     margin: 10px;
     position:absolute;
     top:500px;
-    left:699px;
+    left:687px;
     background-color: transparent;
     border: none;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
 }

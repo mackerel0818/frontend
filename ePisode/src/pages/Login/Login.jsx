@@ -1,9 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 import style from './Login.module.css'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function Login() {
+  const navigate = useNavigate();
 
+  const loginClick = () => {
+    const isEmail = localStorage.getItem('isEmail')
+    const isPassword = localStorage.getItem('isPassword')
+
+    if(isEmail && isPassword) {
+      navigate('/');
+    } else if (isEmail === null || isPassword === null){
+      alert ("아이디 또는 비밀번호를 입력하세요.")
+    } else{
+      alert ("아이디 또는 비밀번호가 일치하지 않습니다.");
+    }
+  }
+
+  const noidClick = () => {
+    navigate('/signup');
+  }
+ // TODO - 로고 클릭 시 메인 페이지로 이동
   return (
     <>
       <img className={style.logo} src='https://res.cloudinary.com/dnbf7czsn/image/upload/v1712585378/logo_on0pc8.png'></img>
@@ -17,8 +36,8 @@ export default function Login() {
             <input className={style.password} type='password' name='password' placeholder='Password'/>
         </p>
       </form>
-      <button className={style.button}>Login</button>
-      <button className={style.noId}>Don't have an account?</button>
+      <button className={style.button} onClick={loginClick}>Login</button>
+      <p className={style.noId} onClick={noidClick}>Don't have an account?</p>
     </>
   )
 }
