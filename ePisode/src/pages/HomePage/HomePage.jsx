@@ -36,7 +36,7 @@ export default function HomePage() {
         <h3 className={styles.desc2}>Daylife, memories, and adventures!</h3>
         <p className={styles.desc3}>Dive into the episodes of our everyday lives, writing and uncovering the essence of who we truly are.</p>
         <button className={styles.btn} onClick={handleClick}>
-          LET'S GO
+          <span className={styles.text}>LET'S GO</span>
         </button>
         <img className={styles.dot} src="https://res.cloudinary.com/dnbf7czsn/image/upload/v1712585378/dot2_l1kmgy.png"></img>
       </article>

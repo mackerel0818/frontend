@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import Header from '../../components/Header/Header'
 import HomePage from '../HomePage/HomePage'
+import styles from './MainPage.module.css'
 
 export default function MainPage() {
   const homeRef = useRef(null)
@@ -20,12 +21,19 @@ export default function MainPage() {
         <Header homeRef={homeRef} aboutRef={aboutRef} contactRef={contactRef} />
         <HomePage />
       </div>
-      <section ref={aboutRef} style={{ backgroundColor: 'lightblue', width: '100%', height: '100vh' }}>
-        <p>about 페이지</p>
+      <section className={styles.wrap_about} ref={aboutRef}>
+        <article className={styles.about1}>
+          <div className={styles.image}></div>
+          <div className={styles.desc}>설명</div>
+        </article>
+        <article className={styles.about2}>
+          <div className={styles.desc2}>설명</div>
+          <div className={styles.image2}></div>
+        </article>
       </section>
-      <section ref={contactRef} style={{ backgroundColor: 'pink', width: '100%', height: '100vh' }}>
+      <footer className={styles.wrap_contact} ref={contactRef}>
         <p>contact 페이지</p>
-      </section>
+      </footer>
     </>
   )
 }
