@@ -21,35 +21,75 @@
 .image {
   width: 50%;
   height: 80%;
-  margin-right: 2%;
-  background-image: url('https://i.pinimg.com/736x/94/b7/b9/94b7b91523b1486432230809e095eae9.jpg');
+  margin-right: 3%;
+  background-image: url('https://res.cloudinary.com/dnbf7czsn/image/upload/v1712749715/KakaoTalk_20240410_204645667_ltetdd.png');
   background-size: cover;
+  background-position: center;
 }
 
 .desc {
-  background-color: yellow;
   width: 30%;
   height: 80%;
   margin-right: 20%;
+  border-top: 3px solid black;
+  padding-top: 0.9em;
+}
+
+.title {
+  font-size: 6em;
+  font-weight: bold;
+}
+.tag {
+  margin: 0.9em 0;
+  font-size: 1.5em;
+  font-family: 'Noto Serif KR', serif;
+}
+.explain {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  text-align: justify;
+  font-family: 'Noto Serif KR', serif;
 }
 
 .image2 {
   width: 50%;
   height: 80%;
-  margin-left: 2%;
-  background-image: url('https://c.wallhere.com/photos/8b/58/waves_sea_swash_foam-988409.jpg!d');
+  margin-left: 3%;
+  background-image: url('https://res.cloudinary.com/dnbf7czsn/image/upload/v1712749715/KakaoTalk_20240410_204656560_jgs3ke.png');
   background-size: cover;
 }
 
 .desc2 {
-  background-color: yellow;
   width: 30%;
   height: 80%;
   margin-left: 20%;
+  border-top: 3px solid black;
+  padding-top: 0.9em;
+}
+
+.title2 {
+  font-size: 6em;
+  font-weight: bold;
+  text-align: end;
+}
+.tag2 {
+  margin: 0.9em 0;
+  font-size: 1.5em;
+  font-family: 'Noto Serif KR', serif;
+  text-align: end;
+}
+.explain2 {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  text-align: justify;
+  font-family: 'Noto Serif KR', serif;
 }
 
 .wrap_contact {
-  background-color: pink;
+  background-color: #252525;
   width: 100%;
-  height: 30vh;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
