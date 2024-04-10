@@ -2,8 +2,16 @@ import React, { useState } from 'react'
 import style from './Login.module.css'
 import { useNavigate } from 'react-router-dom'
 
+//추후 삭제
+const User = {
+  Email: '1234@gmail.com',
+  Password: '1234'
+}
 
 export default function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
 
   const imgClick = () => {
@@ -11,15 +19,12 @@ export default function Login() {
   }
 
   const loginClick = () => {
-    const isEmail = localStorage.getItem('isEmail')
-    const isPassword = localStorage.getItem('isPassword')
-
-    if(isEmail && isPassword) {
-      navigate('/');
-    } else if (isEmail === null || isPassword === null){
-      alert ("아이디와 비밀번호를 입력하세요.")
-    } else{
-      alert ("아이디 또는 비밀번호가 일치하지 않습니다.");
+    if(email===User.Email && password===User.Password){
+      navigate('/')
+    } else if (email === null || password === null) {
+      alert('아이디와 비밀번호를 입력해주세요.')
+    } else {
+      alert('아이디 또는 비밀번호가 일치하지 않습니다.')
     }
   }
 
@@ -40,9 +45,11 @@ export default function Login() {
         <p>
             <input 
               className={style.email} 
-              type='email' 
+              type='text' 
               name='email' 
               placeholder='Email'
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
             />
         </p>
         <p></p>
@@ -52,6 +59,8 @@ export default function Login() {
               type='password' 
               name='password' 
               placeholder='Password'
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
             />
         </p>
       </form>
