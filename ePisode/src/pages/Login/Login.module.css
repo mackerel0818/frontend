@@ -4,6 +4,7 @@
     position: absolute;
     left: 655px;
     top: -20px;
+    cursor: pointer;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
@@ -16,7 +17,7 @@
     font-weight: bold;
     position: absolute;
     top: 200px;
-    left: 665px;
+    left: 661px;
     color: #FF70A6;
     -webkit-user-select:none;
     -moz-user-select:none;
