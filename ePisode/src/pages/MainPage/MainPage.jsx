@@ -4,21 +4,23 @@ import Header from '../../components/Header/Header'
 import HomePage from '../HomePage/HomePage'
 import styles from './MainPage.module.css'
 
+import { RxGithubLogo } from 'react-icons/rx'
+import { Link } from 'react-router-dom'
+
 export default function MainPage() {
   const homeRef = useRef(null)
   const aboutRef = useRef(null)
   const contactRef = useRef(null)
 
   return (
-    <>
-      <div
-        ref={homeRef}
-        style={{
-          WebkitUserSelect: 'none' /* Safari */,
-          msUserSelect: 'none' /* Internet Explorer/Edge */,
-          userSelect: 'none' /* Non-prefixed version, currently supported by Chrome, Firefox, and Opera */,
-        }}
-      >
+    <div
+      style={{
+        WebkitUserSelect: 'none' /* Safari */,
+        msUserSelect: 'none' /* Internet Explorer/Edge */,
+        userSelect: 'none' /* Non-prefixed version, currently supported by Chrome, Firefox, and Opera */,
+      }}
+    >
+      <div ref={homeRef}>
         <Header homeRef={homeRef} aboutRef={aboutRef} contactRef={contactRef} />
         <HomePage />
       </div>
@@ -48,8 +50,20 @@ export default function MainPage() {
         </motion.article>
       </section>
       <footer className={styles.wrap_contact} ref={contactRef}>
-        <p style={{ color: 'white' }}>contact 페이지</p>
+        <div className={styles.info}>
+          <p>2024;Team 4P</p>
+          <p>Project ePisode</p>
+        </div>
+        <p className={styles.message}>
+          Do you want to contact us?
+          <Link to={'/'} className={styles.email}>
+            Send Email
+          </Link>
+        </p>
+        <Link to={'https://github.com/ePisode-4P'} className={styles.github}>
+          <RxGithubLogo />
+        </Link>
       </footer>
-    </>
+    </div>
   )
 }
