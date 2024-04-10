@@ -36,7 +36,7 @@ export default function NavBar({ homeRef, aboutRef, contactRef }) {
         </li>
       </ul>
       <button className={styles.btn} onClick={handleClick}>
-        LET'S GO
+        <span className={styles.text}>LET'S GO</span>
       </button>
     </nav>
   )

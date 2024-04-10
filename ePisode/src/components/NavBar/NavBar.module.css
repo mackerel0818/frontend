@@ -32,9 +32,28 @@
   color: #ff70a6;
   font-weight: bold;
   cursor: pointer;
+  overflow: hidden;
 }
 .btn:hover {
   transition: 0.4s;
   color: white;
   background-color: #ff70a6;
+}
+
+@keyframes slideUpAndDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  51% {
+    transform: translateY(-170%);
+  }
+  50% {
+    transform: translateY(170%);
+  }
+}
+
+.btn:hover .text {
+  display: inline-block;
+  animation: slideUpAndDown 0.5s;
 }

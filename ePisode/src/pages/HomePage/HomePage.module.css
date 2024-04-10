@@ -59,10 +59,29 @@
   font-weight: bold;
   border-radius: 2px;
   cursor: pointer;
+  overflow: hidden;
 }
 .btn:hover {
   transition: 0.3s;
   border: 3px solid ff70a6;
   background-color: white;
   color: #ff70a6;
+}
+
+@keyframes slideUpAndDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  51% {
+    transform: translateY(-170%);
+  }
+  50% {
+    transform: translateY(170%);
+  }
+}
+
+.btn:hover .text {
+  display: inline-block;
+  animation: slideUpAndDown 0.5s;
 }
