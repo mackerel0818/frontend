@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp/SignUp'
 import Login from './pages/Login/Login'
 import RequireAuth from './components/RequireAuth/RequireAuth'
 import MapPage from './pages/MapPage/MapPage'
+import MyPage from './pages/MyPage/MyPage'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/mypage" element={<MyPage/>} />
 
         <Route
           path="/map"
