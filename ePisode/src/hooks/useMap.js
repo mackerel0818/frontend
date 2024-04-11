@@ -5,47 +5,80 @@ const useMap = (mapRef, apiKey) => {
     const mapScript = document.createElement('script')
 
     mapScript.async = true
-    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false`
+    mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false&libraries=services`
 
     document.head.appendChild(mapScript)
 
     const onLoadKakaoMap = () => {
       window.kakao.maps.load(() => {
+        const defaultLat = 33.450701
+        const defaultLon = 126.570667
+
+        const showMap = (lat, lon) => {
+          const locPosition = new window.kakao.maps.LatLng(lat, lon)
+          const mapContainer = mapRef.current
+          const mapOption = {
+            center: locPosition,
+            level: 3,
+          }
+
+          const map = new window.kakao.maps.Map(mapContainer, mapOption)
+          const zoomControl = new window.kakao.maps.ZoomControl()
+          map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT)
+
+          var marker = new window.kakao.maps.Marker({
+            position: locPosition,
+          })
+
+          marker.setMap(map)
+
+          const ps = new window.kakao.maps.services.Places()
+
+          kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+            var latlng = mouseEvent.latLng
+
+            marker.setPosition(latlng)
+
+            const categories = ['MT1', 'CS2', 'PS3', 'SC4', 'AC5', 'PK6', 'OL7', 'SW8', 'BK9', 'CT1', 'AG2', 'PO3', 'AT4', 'AD5', 'FD6', 'CE7', 'HP8', 'PM9']
+
+            categories.forEach((category) => {
+              ps.categorySearch(
+                category,
+                (result, status) => {
+                  if (status === window.kakao.maps.services.Status.OK) {
+                    console.info(`Category: ${category}`, result)
+                  }
+                },
+                {
+                  location: locPosition,
+                  radius: 500,
+                },
+              )
+            })
+          })
+        }
+
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
-              const lat = parseFloat(position.coords.latitude.toFixed(4))
-              const lon = parseFloat(position.coords.longitude.toFixed(4))
+              const lat = parseFloat(position.coords.latitude.toFixed(4)) + -0.0002
+              const lon = parseFloat(position.coords.longitude.toFixed(4)) + 0.004
 
-              const locPosition = new window.kakao.maps.LatLng(lat, lon)
-
-              const mapContainer = mapRef.current
-              const mapOption = {
-                center: locPosition,
-                level: 3,
-              }
-
-              const map = new window.kakao.maps.Map(mapContainer, mapOption)
-
-              const zoomControl = new window.kakao.maps.ZoomControl()
-              map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT)
-
-              var marker = new kakao.maps.Marker({
-                position: new kakao.maps.LatLng(lat, lon),
-                map: map,
-              })
+              showMap(lat, lon)
             },
             (error) => {
               console.error(error)
+              showMap(defaultLat, defaultLon)
             },
             {
-              enableHighAccuracy: true, // 높은 정확도 요청
-              timeout: 15000, // 15초 내에 응답이 없으면 오류를 반환 (선택적)
-              maximumAge: 0, // 캐시된 위치 정보 무시, 항상 최신 정보 요청 (선택적)
+              enableHighAccuracy: true,
+              timeout: 15000,
+              maximumAge: 0,
             },
           )
         } else {
           console.error('이 브라우저에서는 현재 위치 표시 기능을 지원하지 않습니다.')
+          showMap(defaultLat, defaultLon)
         }
       })
     }
