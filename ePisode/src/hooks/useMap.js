@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const useMap = (mapRef, apiKey) => {
+const useMap = (mapRef, apiKey, setSelectedPlace) => {
   useEffect(() => {
     const mapScript = document.createElement('script')
 
@@ -11,6 +11,8 @@ const useMap = (mapRef, apiKey) => {
 
     const onLoadKakaoMap = () => {
       window.kakao.maps.load(() => {
+        let currentOverlay = null
+
         const defaultLat = 36.1458862
         const defaultLon = 128.3928142
 
@@ -32,28 +34,46 @@ const useMap = (mapRef, apiKey) => {
 
           marker.setMap(map)
 
-          const ps = new window.kakao.maps.services.Places()
+          const geocoder = new window.kakao.maps.services.Geocoder()
+          const places = new window.kakao.maps.services.Places()
 
           kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
             var latlng = mouseEvent.latLng
 
-            marker.setPosition(latlng)
+            if (currentOverlay !== null) {
+              currentOverlay.setMap(null)
+            }
 
-            const categories = ['MT1', 'CS2', 'PS3', 'SC4', 'AC5', 'PK6', 'OL7', 'SW8', 'BK9', 'CT1', 'AG2', 'PO3', 'AT4', 'AD5', 'FD6', 'CE7', 'HP8', 'PM9']
+            geocoder.coord2Address(latlng.getLng(), latlng.getLat(), function (result, status) {
+              if (status === kakao.maps.services.Status.OK) {
+                var detailAddr = !!result[0].road_address ? result[0].road_address.address_name : result[0].address.address_name
 
-            categories.forEach((category) => {
-              ps.categorySearch(
-                category,
-                (result, status) => {
-                  if (status === window.kakao.maps.services.Status.OK) {
-                    console.info(`Category: ${category}`, result)
+                places.keywordSearch(detailAddr, function (data, status, pagination) {
+                  if (status === kakao.maps.services.Status.OK) {
+                    var place = data[0]
+
+                    setSelectedPlace(place)
+
+                    marker.setPosition(latlng)
+                    marker.setMap(map)
+
+                    const content = `<div class="bAddr" style="padding: 15px; background: rgba(255, 255, 255, 0.7); border-radius: 6px; border: 1px solid #ccc;">
+                                      <span class="title" style="font-weight: bold;">${place.place_name}</span>
+                                      <div>주소: ${place.address_name}</div>
+                                      <div>전화번호: ${place.phone}</div>
+                                    </div>`
+
+                    currentOverlay = new window.kakao.maps.CustomOverlay({
+                      content: content,
+                      position: latlng,
+                      xAnchor: 0.5,
+                      yAnchor: 1.5,
+                    })
+
+                    currentOverlay.setMap(map)
                   }
-                },
-                {
-                  location: locPosition,
-                  radius: 500,
-                },
-              )
+                })
+              }
             })
           })
         }
@@ -61,9 +81,6 @@ const useMap = (mapRef, apiKey) => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
-              // const lat = parseFloat(position.coords.latitude.toFixed(4)) + -0.0002
-              // const lon = parseFloat(position.coords.longitude.toFixed(4)) + 0.004
-
               const lat = position.coords.latitude
               const lon = position.coords.longitude
 
@@ -91,7 +108,7 @@ const useMap = (mapRef, apiKey) => {
     return () => {
       mapScript.onload = null
     }
-  }, [mapRef, apiKey])
+  }, [mapRef, apiKey, setSelectedPlace])
 }
 
 export default useMap
