@@ -1,9 +1,13 @@
 import React from 'react';
 import style from './MyPage.module.css'
+import SideBar from '../../components/SideBar/SideBar';
 
 export default function MyPage() {
+    
     return (
-        <div className={style.wrap}>
+        <>
+            <SideBar />
+            <div className={style.wrap}>
             <div className={style.page}>
                 <div className={style.top}>
                     <img className={style.image} src='"https://res.cloudinary.com/dnbf7czsn/image/upload/v1712585378/logo_on0pc8.png'/>
@@ -28,6 +32,8 @@ export default function MyPage() {
                 </div>
             </div>
         </div>
+        </>
+        
     );
 }
 

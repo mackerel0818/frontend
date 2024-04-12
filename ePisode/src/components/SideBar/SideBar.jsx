@@ -4,8 +4,16 @@ import { CgProfile } from 'react-icons/cg'
 import { TbLocationPin } from 'react-icons/tb'
 import { FiTable } from 'react-icons/fi'
 import { HiSearch } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
+
 
 export default function SideBar() {
+
+  const navigate = useNavigate()
+  
+  const profileClick = () => {
+  navigate('/mypage')
+}
   return (
     <div className={styles.sidebar}>
       <div>
@@ -19,7 +27,7 @@ export default function SideBar() {
           <FiTable className={styles.btn_icon} />
         </button>
       </div>
-      <button className={styles.btn_profile}>
+      <button className={styles.btn_profile} onClick = {profileClick} >
         <CgProfile className={styles.btn_icon} />
       </button>
     </div>
