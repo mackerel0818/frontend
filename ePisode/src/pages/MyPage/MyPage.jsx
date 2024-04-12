@@ -5,34 +5,32 @@ import SideBar from '../../components/SideBar/SideBar';
 export default function MyPage() {
     
     return (
-        <>
+        <div className={style.pagewrap}>
             <SideBar />
-            <div className={style.wrap}>
-            <div className={style.page}>
-                <div className={style.top}>
-                    <img className={style.image} src='"https://res.cloudinary.com/dnbf7czsn/image/upload/v1712585378/logo_on0pc8.png'/>
-                    <div className={style.userName}>닉네임</div>
-                    <p className={style.userMbti}>ENFP</p>
-                    <button className={style.edit}>edit</button>
-                    <button className={style.logout}>Logout</button>
-                    <p className={style.userEmail}> 1234@test.com </p>
-                </div>
+            <div className={style.mywrap}>
+                <img
+                    className={style.image}
+                    src='https://images.unsplash.com/photo-1712574340322-aaeae2cbaa8f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'>
+                </img>
+                <div className={style.name}>닉네임</div>
+                <div className={style.mbti}>ENFP</div>
+                <button className={style.edit}>edit</button>
+                <div className={style.email}>abc123@gmail.com</div>
+                <button className={style.logout}>Logout</button>
                 <div className={style.line}
                         style={{
-                            width: "25%",
+                            width: "60%",
                             borderBottom: "1px solid #aaa",
                             lineHeight: "0.1em",
                             margin: "10px 0 20px",
                         }}
-                    ></div>
-                <div className={style.bottom}>
-                    <div className={style.userSummary}>관심사</div>
-                    <div className={style.userSummary} /* 클릭 시 글 페이지로 이동? */>방문한 장소 수</div> 
-                    <div className={style.userSummary} /* 클릭 시 북마크 페이지로 이동 */>즐겨찾기</div>
+                    >
                 </div>
+                <p className={style.favorite}>관심사</p>
+                <p className={style.visit}>방문한 장소 수</p>
+                <p className={style.bookmark}>즐겨찾기</p>
             </div>
         </div>
-        </>
         
     );
 }
