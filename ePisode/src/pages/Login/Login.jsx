@@ -18,10 +18,11 @@ export default function Login() {
     navigate('/')
   }
 
-  const loginClick = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault()
     if (email === User.Email && password === User.Password) {
-      navigate('/')
-    } else if (email === null || password === null) {
+      navigate('/map')
+    } else if (email === '' || password === '') {
       alert('아이디와 비밀번호를 입력해주세요.')
     } else {
       alert('아이디 또는 비밀번호가 일치하지 않습니다.')
@@ -34,10 +35,10 @@ export default function Login() {
 
   return (
     <div className={style.wrap}>
-      <img className={style.logo} src="https://res.cloudinary.com/dnbf7czsn/image/upload/v1712585378/logo_on0pc8.png" onClick={imgClick}></img>
+      <img className={style.logo} src="https://res.cloudinary.com/dnbf7czsn/image/upload/v1712585378/logo_on0pc8.png" onClick={imgClick} alt="logo"></img>
       <section className={style.wrap_login}>
         <h2 className={style.Login}>LOGIN</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <p>
             <input className={style.email} type="text" name="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </p>
@@ -45,10 +46,10 @@ export default function Login() {
           <p>
             <input className={style.password} type="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </p>
+          <button className={style.button} type="submit">
+            Login
+          </button>
         </form>
-        <button className={style.button} onClick={loginClick}>
-          Login
-        </button>
         <p className={style.noId} onClick={noidClick}>
           Don't have an account?
         </p>
