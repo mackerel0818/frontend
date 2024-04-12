@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import useMap from '../../hooks/useMap'
 import styles from './MapPage.module.css'
+import SideBar from '../../components/SideBar/SideBar'
 
 export default function MapPage() {
   const mapRef = useRef(null)
@@ -8,5 +9,10 @@ export default function MapPage() {
 
   useMap(mapRef, apiKey)
 
-  return <div ref={mapRef} className={styles.map} id="map"></div>
+  return (
+    <>
+      <SideBar />
+      <div ref={mapRef} className={styles.map} id="map"></div>
+    </>
+  )
 }
