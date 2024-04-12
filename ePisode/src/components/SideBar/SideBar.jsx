@@ -18,9 +18,11 @@ export default function SideBar() {
   return (
     <div className={styles.sidebar}>
       <div>
-        <Link to={'/map'}>
-          <MdLocalParking className={styles.home} />
-        </Link>
+        <div className={styles.wrap_home}>
+          <Link to={'/map'}>
+            <MdLocalParking className={styles.home} />
+          </Link>
+        </div>
 
         <button className={styles.btn}>
           <HiSearch className={styles.btn_icon} />

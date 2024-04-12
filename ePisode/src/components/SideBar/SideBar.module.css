@@ -15,14 +15,16 @@
   justify-content: space-between;
 }
 
+.wrap_home {
+  border-bottom: 2px solid rgba(85, 85, 85, 0.3);
+  margin-bottom: 20px;
+}
 .home {
   width: 100%;
   height: 60px;
   padding-bottom: 20px;
-  border-bottom: 2px solid rgba(85, 85, 85, 0.3);
-  margin-bottom: 20px;
-  color: lightcoral;
-  filter: drop-shadow(2px 2px 1px rgba(240, 128, 128, 0.874));
+  color: #ff70a6;
+  filter: drop-shadow(2px 2px 1px #ff70a7d8);
 }
 .btn {
   height: 40px;
@@ -54,4 +56,5 @@
   color: #ff70a6;
   filter: none;
   scale: 1.1;
+  filter: drop-shadow(1px 1px 0.5px #ff70a7dd);
 }
