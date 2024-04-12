@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import useMap from '../../hooks/useMap'
+import styles from './MapPage.module.css'
 
 export default function MapPage() {
   const mapRef = useRef(null)
@@ -7,5 +8,5 @@ export default function MapPage() {
 
   useMap(mapRef, apiKey)
 
-  return <div ref={mapRef} style={{ width: '100%', height: '100vh' }} id="map"></div>
+  return <div ref={mapRef} className={styles.map} id="map"></div>
 }

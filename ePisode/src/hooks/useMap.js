@@ -11,8 +11,8 @@ const useMap = (mapRef, apiKey) => {
 
     const onLoadKakaoMap = () => {
       window.kakao.maps.load(() => {
-        const defaultLat = 33.450701
-        const defaultLon = 126.570667
+        const defaultLat = 36.1458862
+        const defaultLon = 128.3928142
 
         const showMap = (lat, lon) => {
           const locPosition = new window.kakao.maps.LatLng(lat, lon)
@@ -61,8 +61,11 @@ const useMap = (mapRef, apiKey) => {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             (position) => {
-              const lat = parseFloat(position.coords.latitude.toFixed(4)) + -0.0002
-              const lon = parseFloat(position.coords.longitude.toFixed(4)) + 0.004
+              // const lat = parseFloat(position.coords.latitude.toFixed(4)) + -0.0002
+              // const lon = parseFloat(position.coords.longitude.toFixed(4)) + 0.004
+
+              const lat = position.coords.latitude
+              const lon = position.coords.longitude
 
               showMap(lat, lon)
             },
