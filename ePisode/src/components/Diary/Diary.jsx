@@ -2,9 +2,16 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './Diary.module.css'
 import { MdLocationOn } from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 
 export default function Diary({ selectedPlace }) {
   const categoryName = selectedPlace.category_name.split(' > ').pop()
+
+  const navigate = useNavigate()
+
+  const handleAddEpisodeClick = () => {
+    navigate('/map/new')
+  }
   return (
     <motion.div
       style={{
@@ -30,7 +37,7 @@ export default function Diary({ selectedPlace }) {
           {selectedPlace.road_address_name || selectedPlace.address_name}
         </p>
       </section>
-      <button className={styles.add_episode}>
+      <button className={styles.add_episode} onClick={handleAddEpisodeClick}>
         <span className={styles.plus_btn}>+</span>
       </button>
       <section className={styles.diary}>

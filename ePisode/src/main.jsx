@@ -10,6 +10,7 @@ import Login from './pages/Login/Login'
 import RequireAuth from './components/RequireAuth/RequireAuth'
 import MapPage from './pages/MapPage/MapPage'
 import MyPage from './pages/MyPage/MyPage'
+import AddEpisode from './pages/AddEpisode/AddEpisode'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -18,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/mypage" element={<MyPage/>} />
+        <Route path="/mypage" element={<MyPage />} />
 
         <Route
           path="/map"
@@ -27,7 +28,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <MapPage />
             </RequireAuth>
           }
-        />
+        >
+          <Route path="new" element={<AddEpisode />} />
+        </Route>
 
         <Route path="/*" element={<NotFound />} />
       </Routes>
