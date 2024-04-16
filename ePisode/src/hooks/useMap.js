@@ -72,11 +72,33 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
 
                     currentOverlay.setMap(map)
                   } else {
-                    setSelectedPlace(null)
+                    // 장소 검색 실패 or 결과 없을 때 사용자가 클릭한 위치 기본 정보 설정!
+                    const placeFallback = {
+                      place_name: '알 수 없는 장소',
+                      address_name: detailAddr,
+                      category_name: '',
+                      x: latlng.getLng(),
+                      y: latlng.getLat(),
+                    }
+                    setSelectedPlace(placeFallback)
+
+                    marker.setPosition(latlng)
+                    marker.setMap(map)
                   }
                 })
               } else {
-                setSelectedPlace(null)
+                // 좌표를 주소로 변환할 수 없는 경우
+                const placeFallback = {
+                  place_name: '알 수 없는 장소',
+                  address_name: '알려지지 않음',
+                  category_name: '',
+                  x: latlng.getLng(),
+                  y: latlng.getLat(),
+                }
+                setSelectedPlace(placeFallback)
+
+                marker.setPosition(latlng)
+                marker.setMap(map)
               }
             })
           })

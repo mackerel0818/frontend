@@ -18,7 +18,7 @@ export default function MapPage() {
       <SideBar />
       <div className={styles.mapContainer}>
         <div ref={mapRef} className={styles.map} id="map"></div>
-        <AnimatePresence>{selectedPlace && <Diary selectedPlace={selectedPlace} />}</AnimatePresence>
+        <AnimatePresence>{selectedPlace && <Diary selectedPlace={selectedPlace} setSelectedPlace={setSelectedPlace} />}</AnimatePresence>
         <Outlet />
       </div>
     </>

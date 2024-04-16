@@ -2,9 +2,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './Diary.module.css'
 import { MdLocationOn } from 'react-icons/md'
+import { IoCloseOutline } from 'react-icons/io5'
+
 import { useNavigate } from 'react-router-dom'
 
-export default function Diary({ selectedPlace }) {
+export default function Diary({ selectedPlace, setSelectedPlace }) {
   const categoryName = selectedPlace.category_name.split(' > ').pop()
 
   const navigate = useNavigate()
@@ -12,6 +14,11 @@ export default function Diary({ selectedPlace }) {
   const handleAddEpisodeClick = () => {
     navigate('/map/new')
   }
+
+  const handleCloseClick = () => {
+    setSelectedPlace(null)
+  }
+
   return (
     <motion.div
       style={{
@@ -27,6 +34,9 @@ export default function Diary({ selectedPlace }) {
         duration: 0.5,
       }}
     >
+      <button className={styles.close_diary} onClick={handleCloseClick}>
+        <IoCloseOutline />
+      </button>
       <section className={styles.image}></section>
       <section className={styles.place_info}>
         <div className={styles.wrap_name}>
