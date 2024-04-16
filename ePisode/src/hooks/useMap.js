@@ -71,8 +71,12 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
                     })
 
                     currentOverlay.setMap(map)
+                  } else {
+                    setSelectedPlace(null)
                   }
                 })
+              } else {
+                setSelectedPlace(null)
               }
             })
           })
