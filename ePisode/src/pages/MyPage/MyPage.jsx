@@ -9,23 +9,15 @@ export default function MyPage() {
     navigate('/map')
   }
 
+  const handleInnerClick = (e) => {
+    e.stopPropagation()
+  }
+
+  //TODO - 스타일 시트 분리 및 디스플레이 변경
+
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(107, 107, 107, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: '1000',
-      }}
-      onClick={handleClick}
-    >
-      <div className={style.mywrap}>
+    <div className={style.filter} onClick={handleClick}>
+      <div className={style.mywrap} onClick={handleInnerClick}>
         <img
           className={style.image}
           src="https://images.unsplash.com/photo-1712574340322-aaeae2cbaa8f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"

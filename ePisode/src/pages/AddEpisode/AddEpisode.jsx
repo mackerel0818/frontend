@@ -9,6 +9,12 @@ export default function AddEpisode() {
     navigate('/map')
   }
 
+  const handleInnerClick = (e) => {
+    e.stopPropagation()
+  }
+
+  //TODO - 스타일 시트 분리
+
   return (
     <div
       style={{
@@ -43,6 +49,7 @@ export default function AddEpisode() {
           alignItems: 'center',
           justifyContent: 'center',
         }}
+        onClick={handleInnerClick}
       >
         <div style={{ width: '85%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <p>대충 이쯤 날짜</p>
