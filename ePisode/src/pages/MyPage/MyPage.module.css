@@ -17,9 +17,10 @@
   background-color: antiquewhite;
   width: 700px;
   height: 450px;
-  position: absolute;
-  left: 460px;
-  top: 160px;
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
 
   -webkit-user-select: none;
   -moz-user-select: none;
