@@ -19,7 +19,7 @@ export default function SideBar() {
     <div className={styles.sidebar}>
       <div>
         <div className={styles.wrap_home}>
-          <Link to={'/map'}>
+          <Link to={'/'}>
             <MdLocalParking className={styles.home} />
           </Link>
         </div>
