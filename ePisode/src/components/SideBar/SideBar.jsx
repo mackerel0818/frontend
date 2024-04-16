@@ -13,7 +13,7 @@ export default function SideBar() {
   const navigate = useNavigate()
 
   const profileClick = () => {
-    navigate('/mypage')
+    navigate('/map/mypage')
   }
   return (
     <div className={styles.sidebar}>

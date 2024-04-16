@@ -23,6 +23,7 @@ export default function AddEpisode() {
         alignItems: 'center',
         zIndex: '1000',
       }}
+      onClick={handleClick}
     >
       <div
         className={styles.episode}

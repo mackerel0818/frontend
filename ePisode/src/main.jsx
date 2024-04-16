@@ -19,7 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/" element={<MainPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/mypage" element={<MyPage />} />
 
         <Route
           path="/map"
@@ -30,6 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           }
         >
           <Route path="new" element={<AddEpisode />} />
+          <Route path="mypage" element={<MyPage />} />
         </Route>
 
         <Route path="/*" element={<NotFound />} />
