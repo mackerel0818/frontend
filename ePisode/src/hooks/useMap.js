@@ -74,7 +74,7 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
                   } else {
                     // 장소 검색 실패 or 결과 없을 때 사용자가 클릭한 위치 기본 정보 설정!
                     const placeFallback = {
-                      place_name: '알 수 없는 장소',
+                      place_name: detailAddr,
                       address_name: detailAddr,
                       category_name: '',
                       x: latlng.getLng(),
