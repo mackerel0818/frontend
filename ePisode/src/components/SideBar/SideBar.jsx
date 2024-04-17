@@ -15,6 +15,11 @@ export default function SideBar() {
   const profileClick = () => {
     navigate('/map/mypage')
   }
+
+  const handleSearch = () => {
+    navigate('/map/search')
+  }
+
   return (
     <div className={styles.sidebar}>
       <div>
@@ -24,7 +29,7 @@ export default function SideBar() {
           </Link>
         </div>
 
-        <button className={styles.btn}>
+        <button className={styles.btn} onClick={handleSearch}>
           <HiSearch className={styles.btn_icon} />
         </button>
         <button className={styles.btn}>
