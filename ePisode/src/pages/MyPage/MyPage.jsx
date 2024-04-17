@@ -5,6 +5,12 @@ import { useNavigate } from 'react-router-dom'
 export default function MyPage() {
   const navigate = useNavigate()
 
+  //TODO - edit 이벤트 추가
+
+  const logoutClick = () => {
+    navigate('/')
+  }
+
   const handleClick = () => {
     navigate('/map')
   }
@@ -13,20 +19,29 @@ export default function MyPage() {
     e.stopPropagation()
   }
 
-  //TODO - 스타일 시트 분리 및 디스플레이 변경
-
   return (
-    <div className={style.filter} onClick={handleClick}>
+    <div className={style.filter} onClick={handleClick}> 
       <div className={style.mywrap} onClick={handleInnerClick}>
-        <img
-          className={style.image}
-          src="https://images.unsplash.com/photo-1712574340322-aaeae2cbaa8f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        ></img>
-        <div className={style.name}>닉네임</div>
-        <div className={style.mbti}>ENFP</div>
-        <button className={style.edit}>edit</button>
-        <div className={style.email}>abc123@gmail.com</div>
-        <button className={style.logout}>Logout</button>
+        <div className={style.top}>
+          <img
+            className={style.image}
+            src="https://images.unsplash.com/photo-1712574340322-aaeae2cbaa8f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          ></img>
+          <div className={style.pro}>
+
+            <div className={style.proIn}>
+              <div className={style.name}>닉네임</div>
+              <div className={style.mbti}>ENFP</div>
+              <button className={style.edit}>edit</button>
+              <button className={style.logout} onClick={logoutClick}>Logout</button>
+            </div>
+            
+            <div className={style.email}>abc123@gmail.com</div>
+          </div>
+          
+          
+        </div>
+
         <div
           className={style.line}
           style={{
@@ -36,9 +51,25 @@ export default function MyPage() {
             margin: '10px 0 20px',
           }}
         ></div>
-        <p className={style.favorite}>관심사</p>
-        <p className={style.visit}>방문한 장소 수</p>
-        <p className={style.bookmark}>즐겨찾기</p>
+        <div className={style.bottom}>
+          <div className={style.back}>
+            <p className={style.favorite}>관심사</p>
+            <p className={style.favDetail}>영화관</p>
+          </div>
+          <div className={style.back}>
+            <p className={style.visit}>방문한 장소 수</p>
+            <div className={style.num}>2개</div>
+          </div>
+          <div className={style.back}>
+            <p className={style.bookmark}>즐겨찾기</p>
+            <div className={style.num}>2개</div>
+          </div>
+          <div className={style.back}>
+            <p className={style.heart}>관심장소</p>
+            <div className={style.num}>2개</div>
+          </div>
+          
+        </div>
       </div>
     </div>
   )

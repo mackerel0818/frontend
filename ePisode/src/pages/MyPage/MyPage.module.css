@@ -9,106 +9,149 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   z-index: 1000;
 }
 
 .mywrap {
   z-index: 1000;
-  background-color: antiquewhite;
+  background-color: white;
   width: 700px;
   height: 450px;
-  position: fixed;
-  left: 50%;
-  top: 20%;
+  margin-left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
 
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
 }
+.top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 70px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.pro {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+
+.proIn {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: -15px;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .image {
-  position: absolute;
   width: 80px;
   height: 80px;
   object-fit: cover;
-  margin: auto;
-  left: 90px;
-  top: 80px;
   border-radius: 100%;
 }
 
 .name {
-  position: absolute;
-  left: 200px;
-  top: 90px;
   font-size: 30px;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 .mbti {
-  position: absolute;
-  left: 300px;
-  top: 95px;
   font-size: 20px;
   font-weight: 100;
+  margin-top: 15px;
 }
 
 .edit {
-  position: absolute;
-  left: 380px;
-  top: 98px;
   background-color: #d9d9d9;
   border: none;
   cursor: pointer;
+  height: 15px;
+  margin-left: 10px;
+  margin-top: 20px;
 }
 
 .email {
-  position: absolute;
-  left: 200px;
-  top: 130px;
   font-size: 15px;
   font-weight: 100;
+  margin-top: 5px;
+  margin-left: 4px;
 }
 
 .logout {
-  position: absolute;
-  left: 550px;
-  top: 115px;
+  height: 25px;
+  margin-left: 60px;
+  margin-top: 30px;
   background-color: white;
   border-width: 0.3px;
   border-color: #d5d5d5;
   box-shadow: 2px 3px #d5d5d5;
   cursor: pointer;
+
 }
 
 .line {
-  position: absolute;
-  left: 200px;
-  top: 150px;
+  align-self: center;
+}
+
+.back {
+  background-color: lightgray;
+  border-radius: 20px;
+  width: 350px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
 }
 
 .favorite {
-  position: absolute;
-  left: 200px;
-  top: 200px;
   font-size: 20px;
   font-weight: bold;
+  margin: 10px;
 }
 
 .visit {
-  position: absolute;
-  left: 200px;
-  top: 250px;
   font-size: 20px;
   font-weight: bold;
+  margin: 10px;
 }
 
 .bookmark {
-  position: absolute;
-  left: 200px;
-  top: 300px;
   font-size: 20px;
   font-weight: bold;
+  margin: 10px;
+}
+
+.heart {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.num {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+  margin-left: auto;
+}
+
+.favDetail {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px;
+  margin-left: auto;
 }
