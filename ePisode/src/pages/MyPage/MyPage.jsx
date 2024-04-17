@@ -6,6 +6,9 @@ export default function MyPage() {
   const navigate = useNavigate()
 
   //TODO - edit 이벤트 추가
+  const editClick = () => {
+    navigate('/map/profileedit')
+  }
 
   const logoutClick = () => {
     navigate('/')
@@ -32,7 +35,7 @@ export default function MyPage() {
             <div className={style.proIn}>
               <div className={style.name}>닉네임</div>
               <div className={style.mbti}>ENFP</div>
-              <button className={style.edit}>edit</button>
+              <button className={style.edit} onClick={editClick}>edit</button>
               <button className={style.logout} onClick={logoutClick}>Logout</button>
             </div>
             
