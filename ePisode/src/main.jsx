@@ -12,6 +12,8 @@ import MapPage from './pages/MapPage/MapPage'
 import MyPage from './pages/MyPage/MyPage'
 import AddEpisode from './pages/AddEpisode/AddEpisode'
 import Search from './pages/Search/Search'
+import Recommend from './pages/Recommend/Recommend'
+import Analysis from './pages/Analysis/Analysis'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -32,6 +34,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="new" element={<AddEpisode />} />
           <Route path="mypage" element={<MyPage />} />
           <Route path="search" element={<Search />} />
+          <Route path="recommend" element={<Recommend />} />
+          <Route path="analysis" element={<Analysis />} />
         </Route>
 
         <Route path="/*" element={<NotFound />} />

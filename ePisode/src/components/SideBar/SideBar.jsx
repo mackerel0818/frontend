@@ -25,8 +25,42 @@ export default function SideBar() {
     }
   }
 
+  const handleRecommend = () => {
+    if (location.pathname === '/map/recommend') {
+      navigate('/map')
+    } else {
+      navigate('/map/recommend')
+    }
+  }
+
+  const handleAnalysis = () => {
+    if (location.pathname === '/map/analysis') {
+      navigate('/map')
+    } else {
+      navigate('/map/analysis')
+    }
+  }
+
   const searchIconStyle =
     location.pathname === '/map/search'
+      ? {
+          color: '#ff70a6',
+          filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
+          transform: 'scale(1.1)',
+        }
+      : {}
+
+  const recommendIconStyle =
+    location.pathname === '/map/recommend'
+      ? {
+          color: '#ff70a6',
+          filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
+          transform: 'scale(1.1)',
+        }
+      : {}
+
+  const analysisIconStyle =
+    location.pathname === '/map/analysis'
       ? {
           color: '#ff70a6',
           filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
@@ -46,11 +80,11 @@ export default function SideBar() {
         <button className={styles.btn} onClick={handleSearch}>
           <HiSearch className={styles.btn_icon} style={searchIconStyle} />
         </button>
-        <button className={styles.btn}>
-          <TbLocationPin className={styles.btn_icon} />
+        <button className={styles.btn} onClick={handleRecommend}>
+          <TbLocationPin className={styles.btn_icon} style={recommendIconStyle} />
         </button>
-        <button className={styles.btn}>
-          <FiTable className={styles.btn_icon} />
+        <button className={styles.btn} onClick={handleAnalysis}>
+          <FiTable className={styles.btn_icon} style={analysisIconStyle} />
         </button>
       </div>
       <button className={styles.btn_profile} onClick={profileClick}>
