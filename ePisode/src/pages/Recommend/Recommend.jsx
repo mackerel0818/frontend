@@ -11,7 +11,7 @@ export default function Recommend() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className={styles.category}>recommed</h2>
+      <h2 className={styles.category}>추천 장소</h2>
       <input type="search" />
       <ul>
         <li>1</li>

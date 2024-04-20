@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { FaSearch } from 'react-icons/fa'
 import styles from './Search.module.css'
 
 export default function Search() {
@@ -12,7 +13,10 @@ export default function Search() {
       transition={{ duration: 0.5 }}
     >
       <h2 className={styles.category}>search</h2>
-      <input type="search" />
+      <div className={styles.wrap_input}>
+        <FaSearch id={styles.search_icon} />
+        <input placeholder="검색어를 입력하세요." />
+      </div>
       <ul>
         <li>1</li>
         <li>1</li>
