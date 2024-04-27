@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaSearch } from 'react-icons/fa'
+import { MdLocationOn } from 'react-icons/md'
 import styles from './Search.module.css'
 
 export default function Search() {
@@ -42,6 +43,8 @@ export default function Search() {
     }
   }
 
+  console.log(places.category_name, places.road_address_name, places.address_name)
+
   return (
     <motion.div
       className={styles.wrap}
@@ -55,11 +58,20 @@ export default function Search() {
         <FaSearch id={styles.search_icon} />
         <input placeholder="검색어를 입력하세요." value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={handleKeyDown} />
       </div>
-      <ul>
+      <div className={styles.wrap_card}>
         {places.map((place, index) => (
-          <li key={index}>{place.place_name}</li>
+          <div key={index} className={styles.card}>
+            <div className={styles.wrap_title}>
+              <p className={styles.card_title}>{place.place_name}</p>
+              <p className={styles.card_category}>{place.category_name.split(' > ').pop()}</p>
+            </div>
+            <p className={styles.address_name}>
+              <MdLocationOn className={styles.icon} />
+              {place.road_address_name || place.address_name}
+            </p>
+          </div>
         ))}
-      </ul>
+      </div>
     </motion.div>
   )
 }

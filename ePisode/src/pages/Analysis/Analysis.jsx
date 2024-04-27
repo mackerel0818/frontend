@@ -12,7 +12,6 @@ export default function Analysis() {
       transition={{ duration: 0.5 }}
     >
       <h2 className={styles.category}>생활 패턴 분석 보고서</h2>
-      <input type="search" />
       <ul>
         <li>1</li>
         <li>1</li>

@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   padding: 20px 25px;
+
+  overflow-y: hidden;
 }
 
 .category {
@@ -19,7 +21,7 @@
 }
 
 .wrap_input {
-  margin: 20px 0px;
+  margin: 20px 0;
   background-color: white;
   width: 100%;
   border-radius: 10px;
@@ -45,4 +47,56 @@ input:focus {
 
 #search_icon {
   color: #ff70a6;
+}
+
+.wrap_card {
+  height: 90%;
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+
+  /* 스크롤바 숨기기: Chrome, Safari, Edge */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.wrap_title {
+  display: flex;
+}
+
+.card {
+  background-color: white;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  cursor: pointer;
+}
+
+.card_title {
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.card_category {
+  margin-left: 3px;
+  font-size: 0.9em;
+  color: #636363;
+}
+
+.address_name {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #4b4b4b;
+}
+
+.icon {
+  font-size: 1.4em;
+  margin-right: 3px;
 }

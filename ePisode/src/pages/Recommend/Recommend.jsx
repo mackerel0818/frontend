@@ -12,7 +12,6 @@ export default function Recommend() {
       transition={{ duration: 0.5 }}
     >
       <h2 className={styles.category}>추천 장소</h2>
-      <input type="search" />
       <ul>
         <li>1</li>
         <li>1</li>
