@@ -43,8 +43,6 @@ export default function Search() {
     }
   }
 
-  console.log(places.category_name, places.road_address_name, places.address_name)
-
   return (
     <motion.div
       className={styles.wrap}
@@ -60,7 +58,15 @@ export default function Search() {
       </div>
       <div className={styles.wrap_card}>
         {places.map((place, index) => (
-          <SearchCard index={index} place_name={place.place_name} category_name={place.category_name} road_address_name={place.road_address_name} address_name={place.address_name} />
+          <SearchCard
+            key={index}
+            index={index}
+            place={place}
+            place_name={place.place_name}
+            category_name={place.category_name}
+            road_address_name={place.road_address_name}
+            address_name={place.address_name}
+          />
         ))}
       </div>
     </motion.div>

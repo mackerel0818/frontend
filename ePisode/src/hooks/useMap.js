@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const useMap = (mapRef, apiKey, setSelectedPlace) => {
+const useMap = (mapRef, apiKey, setSelectedPlace, selectedPlace) => {
   useEffect(() => {
     const mapScript = document.createElement('script')
 
@@ -28,9 +28,15 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
           const zoomControl = new window.kakao.maps.ZoomControl()
           map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT)
 
-          var marker = new window.kakao.maps.Marker({
-            position: locPosition,
-          })
+          var marker = new window.kakao.maps.Marker({})
+
+          if (selectedPlace) {
+            console.log(selectedPlace)
+            const selectedLocation = new window.kakao.maps.LatLng(selectedPlace.place.y, selectedPlace.place.x)
+            marker.setPosition(selectedLocation)
+            marker.setMap(map)
+            map.setCenter(selectedLocation)
+          }
 
           marker.setMap(map)
 
@@ -56,21 +62,6 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
 
                     marker.setPosition(latlng)
                     marker.setMap(map)
-
-                    const content = `<div class="bAddr" style="padding: 15px; background: rgba(255, 255, 255, 0.7); border-radius: 6px; border: 1px solid #ccc;">
-                                      <span class="title" style="font-weight: bold;">${place.place_name}</span>
-                                      <div>주소: ${place.address_name}</div>
-                                      <div>전화번호: ${place.phone}</div>
-                                    </div>`
-
-                    currentOverlay = new window.kakao.maps.CustomOverlay({
-                      content: content,
-                      position: latlng,
-                      xAnchor: 0.5,
-                      yAnchor: 1.5,
-                    })
-
-                    currentOverlay.setMap(map)
                   } else {
                     // 장소 검색 실패 or 결과 없을 때 사용자가 클릭한 위치 기본 정보 설정!
                     const placeFallback = {
@@ -134,7 +125,7 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
     return () => {
       mapScript.onload = null
     }
-  }, [mapRef, apiKey, setSelectedPlace])
+  }, [mapRef, apiKey, setSelectedPlace, selectedPlace])
 }
 
 export default useMap
