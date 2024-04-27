@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaSearch } from 'react-icons/fa'
-import { MdLocationOn } from 'react-icons/md'
 import styles from './Search.module.css'
+import SearchCard from '../../components/Card/SearchCard'
 
 export default function Search() {
   const apiKey = import.meta.env.VITE_KAKAO_REST_API_KEY
@@ -60,16 +60,7 @@ export default function Search() {
       </div>
       <div className={styles.wrap_card}>
         {places.map((place, index) => (
-          <div key={index} className={styles.card}>
-            <div className={styles.wrap_title}>
-              <p className={styles.card_title}>{place.place_name}</p>
-              <p className={styles.card_category}>{place.category_name.split(' > ').pop()}</p>
-            </div>
-            <p className={styles.address_name}>
-              <MdLocationOn className={styles.icon} />
-              {place.road_address_name || place.address_name}
-            </p>
-          </div>
+          <SearchCard index={index} place_name={place.place_name} category_name={place.category_name} road_address_name={place.road_address_name} address_name={place.address_name} />
         ))}
       </div>
     </motion.div>
