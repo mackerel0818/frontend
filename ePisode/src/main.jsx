@@ -14,7 +14,7 @@ import AddEpisode from './pages/AddEpisode/AddEpisode'
 import Search from './pages/Search/Search'
 import Recommend from './pages/Recommend/Recommend'
 import Analysis from './pages/Analysis/Analysis'
-import { SelectedPlaceProvider } from './Contexts/SelectedPlaceContext'
+import { SelectedPlaceProvider } from './contexts/SelectedPlaceContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

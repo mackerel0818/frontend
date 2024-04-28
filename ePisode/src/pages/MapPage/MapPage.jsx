@@ -5,7 +5,7 @@ import SideBar from '../../components/SideBar/SideBar'
 import Diary from '../../components/Diary/Diary'
 import { Outlet } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { useSelectedPlace } from '../../Contexts/SelectedPlaceContext'
+import { useSelectedPlace } from '../../contexts/SelectedPlaceContext'
 
 export default function MapPage() {
   const { selectedPlace } = useSelectedPlace()

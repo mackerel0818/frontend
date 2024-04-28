@@ -1,7 +1,7 @@
 import React from 'react'
 import { MdLocationOn } from 'react-icons/md'
 import styles from './SearchCard.module.css'
-import { useSelectedPlace } from '../../Contexts/SelectedPlaceContext'
+import { useSelectedPlace } from '../../contexts/SelectedPlaceContext'
 
 export default function SearchCard({ index, place, place_name, category_name, road_address_name, address_name }) {
   const { setSelectedPlace } = useSelectedPlace()
