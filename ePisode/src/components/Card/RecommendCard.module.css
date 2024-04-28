@@ -35,8 +35,30 @@
   color: #4b4b4b;
 }
 
-.icon {
+.icon_location {
   font-size: 1.4em;
   margin-right: 3px;
   color: #4b4b4b;
+}
+
+.btn {
+  background: none;
+  border: none;
+  padding: none;
+}
+.icon_heart {
+  font-size: 1.8em;
+  color: #ff3783;
+  cursor: pointer;
+}
+.btn:hover {
+  transition: 0.3s;
+  scale: 1.1;
+  rotate: 15deg;
+}
+
+.wrap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
