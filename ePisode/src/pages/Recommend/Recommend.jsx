@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './Recommend.module.css'
-import SearchCard from '../../components/Card/SearchCard'
+import RecommendCard from '../../components/Card/RecommendCard'
 
 export default function Recommend() {
   //NOTE - 임시 배열 나중에 지우기!!
@@ -93,7 +93,7 @@ export default function Recommend() {
       <h2 className={styles.category}>추천 장소</h2>
       <div className={styles.wrap_card}>
         {recommendedPlaces.map((place, index) => (
-          <SearchCard key={index} place={place} place_name={place.place_name} category_name={place.category_name} road_address_name={place.road_address_name} address_name={place.address_name} />
+          <RecommendCard key={index} place={place} place_name={place.place_name} category_name={place.category_name} road_address_name={place.road_address_name} address_name={place.address_name} />
         ))}
       </div>
     </motion.div>
