@@ -13,44 +13,9 @@ export default function AddEpisode() {
     e.stopPropagation()
   }
 
-  //TODO - 스타일 시트 분리
-
   return (
-    <div
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(107, 107, 107, 0.5)',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: '1000',
-      }}
-      onClick={handleClick}
-    >
-      <div
-        className={styles.episode}
-        style={{
-          width: '1000px',
-          height: '600px',
-          borderRadius: '25px',
-          overflow: 'hidden',
-          // backgroundColor: 'lightgrey',
-          position: 'fixed',
-          top: '10%',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          zIndex: '2000',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-        onClick={handleInnerClick}
-      >
+    <div className={styles.filter} onClick={handleClick}>
+      <div className={styles.episode} onClick={handleInnerClick}>
         <div style={{ width: '85%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <p>대충 이쯤 날짜</p>
           <h2>에피소드 추가하는 창</h2>
