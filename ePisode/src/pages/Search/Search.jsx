@@ -43,6 +43,20 @@ export default function Search() {
     }
   }
 
+  const cardVariants = {
+    hidden: (index) => ({
+      opacity: 0,
+      y: 20 * index,
+    }),
+    visible: (index) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.1,
+      },
+    }),
+  }
+
   return (
     <motion.div
       className={styles.wrap}
@@ -58,15 +72,17 @@ export default function Search() {
       </div>
       <div className={styles.wrap_card}>
         {places.map((place, index) => (
-          <SearchCard
-            key={index}
-            index={index}
-            place={place}
-            place_name={place.place_name}
-            category_name={place.category_name}
-            road_address_name={place.road_address_name}
-            address_name={place.address_name}
-          />
+          <motion.div custom={index} variants={cardVariants} initial="hidden" animate="visible" key={place.id}>
+            <SearchCard
+              key={place.id}
+              index={index}
+              place={place}
+              place_name={place.place_name}
+              category_name={place.category_name}
+              road_address_name={place.road_address_name}
+              address_name={place.address_name}
+            />
+          </motion.div>
         ))}
       </div>
     </motion.div>
