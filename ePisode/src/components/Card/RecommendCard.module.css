@@ -41,10 +41,20 @@
   color: #4b4b4b;
 }
 
+.wrap_btn {
+  display: flex;
+  align-items: center;
+}
+
 .btn {
   background: none;
   border: none;
   padding: none;
+}
+.icon_trash {
+  font-size: 1.8em;
+  color: #ff3783;
+  cursor: pointer;
 }
 .icon_heart {
   font-size: 1.8em;
@@ -54,7 +64,6 @@
 .btn:hover {
   transition: 0.3s;
   scale: 1.1;
-  rotate: 15deg;
 }
 
 .wrap {

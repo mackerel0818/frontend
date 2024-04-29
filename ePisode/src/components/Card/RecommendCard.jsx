@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { MdLocationOn } from 'react-icons/md'
 import { GoHeart, GoHeartFill } from 'react-icons/go'
+import { GoTrash } from 'react-icons/go'
 
 import styles from './RecommendCard.module.css'
 import { useSelectedPlace } from '../../contexts/SelectedPlaceContext'
@@ -25,9 +26,14 @@ export default function RecommendCard({ index, place, place_name, category_name,
           <p className={styles.card_category}>{category_name.split(' > ').pop()}</p>
           <p className={styles.card_title}>{place_name}</p>
         </div>
-        <button className={styles.btn} onClick={handleLikeClick}>
-          {liked ? <GoHeartFill className={styles.icon_heart} /> : <GoHeart className={styles.icon_heart} />}
-        </button>
+        <div className={styles.wrap_btn}>
+          <button className={styles.btn} onClick={handleLikeClick}>
+            {liked ? <GoHeartFill className={styles.icon_heart} /> : <GoHeart className={styles.icon_heart} />}
+          </button>
+          <button className={styles.btn}>
+            <GoTrash className={styles.icon_trash} />
+          </button>
+        </div>
       </div>
 
       <p className={styles.address_name}>
