@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
 import { FaSearch } from 'react-icons/fa'
 import styles from './Search.module.css'
@@ -9,7 +10,35 @@ export default function Search() {
   const headers = new Headers({ Authorization: `KakaoAK ${apiKey}` })
 
   const [keyword, setKeyword] = useState('')
-  const [places, setPlaces] = useState([])
+  const [searchAttempted, setSearchAttempted] = useState(false)
+
+  const {
+    data: places = [],
+    refetch,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryKey: ['places', keyword],
+    queryFn: async () => {
+      if (!keyword.trim()) {
+        throw new Error('검색어를 입력해주세요!')
+      }
+
+      setSearchAttempted(true)
+
+      const response = await fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`, {
+        headers,
+      })
+
+      if (!response.ok) {
+        throw new Error('검색 결과를 가져오는데 실패했습니다.')
+      }
+
+      const data = await response.json()
+      return data.documents
+    },
+    enabled: false,
+  })
 
   const handleSearch = async () => {
     if (!keyword.trim()) {
@@ -17,24 +46,7 @@ export default function Search() {
       return
     }
 
-    try {
-      const response = await fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`, {
-        headers,
-      })
-
-      const data = await response.json()
-      console.log(data)
-
-      if (response.ok) {
-        setPlaces(data.documents)
-      } else {
-        console.error('Failed to fetch:', data)
-        alert('검색 결과를 가져오는데 실패했습니다.')
-      }
-    } catch (error) {
-      console.error('검색 에러:', error)
-      alert('검색 중 오류가 발생했습니다.')
-    }
+    refetch().catch(console.error)
   }
 
   const handleKeyDown = (event) => {
@@ -57,8 +69,6 @@ export default function Search() {
     }),
   }
 
-  console.log(places)
-
   return (
     <motion.div
       className={styles.wrap}
@@ -73,7 +83,8 @@ export default function Search() {
         <input placeholder="검색어를 입력하세요." value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={handleKeyDown} />
       </div>
       <div className={styles.wrap_card}>
-        {places.length == 0 && <p>검색 결과 없음</p>}
+        {isLoading && <p>로딩 중...</p>}
+        {!isLoading && searchAttempted && places.length === 0 && <p>검색 결과가 없습니다.</p>}
         {places.map((place, index) => (
           <motion.div custom={index} variants={cardVariants} initial="hidden" animate="visible" key={place.id}>
             <SearchCard
