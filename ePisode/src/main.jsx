@@ -15,6 +15,8 @@ import Search from './pages/Search/Search'
 import Recommend from './pages/Recommend/Recommend'
 import Analysis from './pages/Analysis/Analysis'
 import { SelectedPlaceProvider } from './contexts/SelectedPlaceContext'
+import Like from './pages/Like/Like'
+import Bookmark from './pages/Bookmark/Bookmark'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -37,6 +39,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="mypage" element={<MyPage />} />
             <Route path="search" element={<Search />} />
             <Route path="recommend" element={<Recommend />} />
+            <Route path="likes" element={<Like />} />
+            <Route path="Bookmark" element={<Bookmark />} />
             <Route path="analysis" element={<Analysis />} />
           </Route>
 

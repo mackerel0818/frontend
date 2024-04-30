@@ -7,7 +7,9 @@ import { CgProfile } from 'react-icons/cg'
 import { TbLocationPin } from 'react-icons/tb'
 import { FiTable } from 'react-icons/fi'
 import { HiSearch } from 'react-icons/hi'
+import { LuFileHeart } from 'react-icons/lu'
 import { useNavigate } from 'react-router-dom'
+import { TbFileLike } from 'react-icons/tb'
 
 export default function SideBar() {
   const navigate = useNavigate()
@@ -33,6 +35,22 @@ export default function SideBar() {
     }
   }
 
+  const handleLike = () => {
+    if (location.pathname === '/map/likes') {
+      navigate('/map')
+    } else {
+      navigate('/map/likes')
+    }
+  }
+
+  const handleBookmark = () => {
+    if (location.pathname === '/map/bookmark') {
+      navigate('/map')
+    } else {
+      navigate('/map/bookmark')
+    }
+  }
+
   const handleAnalysis = () => {
     if (location.pathname === '/map/analysis') {
       navigate('/map')
@@ -41,32 +59,17 @@ export default function SideBar() {
     }
   }
 
-  const searchIconStyle =
-    location.pathname === '/map/search'
-      ? {
-          color: '#ff70a6',
-          filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
-          transform: 'scale(1.1)',
-        }
-      : {}
+  const style = {
+    color: '#ff70a6',
+    filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
+    transform: 'scale(1.1)',
+  }
 
-  const recommendIconStyle =
-    location.pathname === '/map/recommend'
-      ? {
-          color: '#ff70a6',
-          filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
-          transform: 'scale(1.1)',
-        }
-      : {}
-
-  const analysisIconStyle =
-    location.pathname === '/map/analysis'
-      ? {
-          color: '#ff70a6',
-          filter: 'drop-shadow(1px 1px 0.5px #ff70a7dd)',
-          transform: 'scale(1.1)',
-        }
-      : {}
+  const searchIconStyle = location.pathname === '/map/search' ? style : {}
+  const recommendIconStyle = location.pathname === '/map/recommend' ? style : {}
+  const analysisIconStyle = location.pathname === '/map/analysis' ? style : {}
+  const likeIconStyle = location.pathname === '/map/likes' ? style : {}
+  const heartIconStyle = location.pathname === '/map/bookmark' ? style : {}
 
   return (
     <div className={styles.sidebar}>
@@ -83,6 +86,14 @@ export default function SideBar() {
         <button className={styles.btn} onClick={handleRecommend}>
           <TbLocationPin className={styles.btn_icon} style={recommendIconStyle} />
         </button>
+
+        <button className={styles.btn} onClick={handleLike}>
+          <TbFileLike className={styles.btn_icon} style={likeIconStyle} />
+        </button>
+        <button className={styles.btn} onClick={handleBookmark}>
+          <LuFileHeart className={styles.btn_icon} style={heartIconStyle} />
+        </button>
+
         <button className={styles.btn} onClick={handleAnalysis}>
           <FiTable className={styles.btn_icon} style={analysisIconStyle} />
         </button>
