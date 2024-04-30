@@ -1,21 +1,27 @@
 import React, { useState } from 'react'
 import { MdLocationOn } from 'react-icons/md'
-import { GoHeartFill, GoHeart } from 'react-icons/go'
+import { BiLike, BiSolidLike, BiDislike, BiSolidDislike } from 'react-icons/bi'
 
-import styles from './BookmarkCard.module.css'
+import styles from './LikeCard.module.css'
 import { useSelectedPlace } from '../../contexts/SelectedPlaceContext'
 
-export default function BookmarkCard({ index, place, place_name, category_name, road_address_name, address_name }) {
+export default function LikeCard({ index, place, place_name, category_name, road_address_name, address_name }) {
   const { setSelectedPlace } = useSelectedPlace()
-  const [loved, setLoved] = useState(false)
+  const [liked, setLiked] = useState(false)
+  const [disliked, setDisliked] = useState(false)
 
   const handleClick = () => {
     setSelectedPlace({ place })
   }
 
-  const handleLoveClick = (e) => {
+  const handleLikeClick = (e) => {
     e.stopPropagation()
-    setLoved(!loved)
+    setLiked(!liked)
+  }
+
+  const handleDislikeClick = (e) => {
+    e.stopPropagation()
+    setDisliked(!disliked)
   }
 
   return (
@@ -26,8 +32,8 @@ export default function BookmarkCard({ index, place, place_name, category_name, 
           <p className={styles.card_title}>{place_name}</p>
         </div>
         <div className={styles.wrap_btn}>
-          <button className={styles.btn} onClick={handleLoveClick}>
-            {loved ? <GoHeartFill className={styles.icon_heart} /> : <GoHeart className={styles.icon_heart} />}
+          <button className={styles.btn} onClick={handleLikeClick}>
+            {liked ? <BiSolidLike className={styles.icon_heart} /> : <BiLike className={styles.icon_heart} />}
           </button>
         </div>
       </div>

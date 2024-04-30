@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './Like.module.css'
-import RecommendCard from '../../components/Card/RecommendCard'
+import LikeCard from '../../components/Card/LikeCard'
 
 export default function Like() {
   //NOTE - 임시 배열 나중에 지우기!!
@@ -104,11 +104,11 @@ export default function Like() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <h2 className={styles.category}>이거 카테고리명 뭐라고 하지</h2>
+      <h2 className={styles.category}>이거 카테고리명 뭐라고</h2>
       <div className={styles.wrap_card}>
         {recommendedPlaces.map((place, index) => (
           <motion.div custom={index} variants={cardVariants} initial="hidden" animate="visible" key={index}>
-            <RecommendCard place={place} place_name={place.place_name} category_name={place.category_name} road_address_name={place.road_address_name} address_name={place.address_name} />
+            <LikeCard place={place} place_name={place.place_name} category_name={place.category_name} road_address_name={place.road_address_name} address_name={place.address_name} />
           </motion.div>
         ))}
       </div>
