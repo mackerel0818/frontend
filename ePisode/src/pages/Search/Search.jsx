@@ -57,6 +57,8 @@ export default function Search() {
     }),
   }
 
+  console.log(places)
+
   return (
     <motion.div
       className={styles.wrap}
@@ -71,6 +73,7 @@ export default function Search() {
         <input placeholder="검색어를 입력하세요." value={keyword} onChange={(e) => setKeyword(e.target.value)} onKeyDown={handleKeyDown} />
       </div>
       <div className={styles.wrap_card}>
+        {places.length == 0 && <p>검색 결과 없음</p>}
         {places.map((place, index) => (
           <motion.div custom={index} variants={cardVariants} initial="hidden" animate="visible" key={place.id}>
             <SearchCard
