@@ -39,7 +39,7 @@ const useMap = (mapRef, apiKey, setSelectedPlace, selectedPlace) => {
 
             const placeFallback = {
               place_name: selectedPlace.place.place_name,
-              address_name: selectedPlace.place.road_address_name ?? selectedPlace.place.address_name,
+              address_name: selectedPlace.place.road_address_name || selectedPlace.place.address_name,
               category_name: selectedPlace.place.category_name,
               x: selectedPlace.place.x,
               y: selectedPlace.place.y,
