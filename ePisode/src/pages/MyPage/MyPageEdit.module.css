@@ -31,23 +31,84 @@
     user-select: none;
   }
 
-  .proCate {
+  .proList {
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
+    margin-top: 20px;
     margin-right: auto;
-    margin-left: 100px;
+    margin-left: 210px;
   }
 
   .title {
     font-size: 25px;
     font-weight: bold;
     margin-top: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 
   .proHead {
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 30px;
+  }
+
+  .group {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .inputName {
+    height: 20px;
+    width: 150px;
+    margin-left: 80px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+  }
+
+  .selectMbti {
+    height: 20px;
+    width: 150px;
+    margin-left: 73px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+  }
+
+  .inputAddress {
+    height: 20px;
+    width: 150px;
+    margin-left: 80px;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+  }
+
+  .saveBtn {
+    width: 70px;
+    height: 30px;
+    background-color: #ff70a6;
+    border-radius: 20px;
+    border: none;
+    font-weight: bolder;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+    margin-left: 300px;
+  }
+
+  .deleteUser {
+    background-color: transparent;
+    border: none;
+    color: red;
+    font-weight: bolder;
+    font-size: 15px;
+    cursor: pointer;
+    margin-left: 200px;
   }
