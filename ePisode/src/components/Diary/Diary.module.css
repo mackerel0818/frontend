@@ -53,6 +53,11 @@
 .place_info {
   margin: 30px 35px;
 }
+.wrap {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
 .wrap_name {
   display: flex;
   margin-bottom: 15px;
@@ -140,4 +145,19 @@
   background-color: rgb(255, 255, 255);
   transition: 0.3s;
   color: #ff70a6;
+}
+
+.btn {
+  background: none;
+  border: none;
+  padding: none;
+}
+.icon_heart {
+  font-size: 2.2em;
+  color: #ff3783;
+  cursor: pointer;
+}
+.btn:hover {
+  transition: 0.3s;
+  scale: 1.1;
 }

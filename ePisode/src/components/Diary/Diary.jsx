@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Diary.module.css'
 import { MdLocationOn } from 'react-icons/md'
 import { IoCloseOutline } from 'react-icons/io5'
+import { GoHeart, GoHeartFill } from 'react-icons/go'
 
 import { useNavigate } from 'react-router-dom'
 
 export default function Diary({ selectedPlace, setSelectedPlace }) {
+  const [loved, setLoved] = useState(false)
+
   const categoryName = selectedPlace.category_name.split(' > ').pop()
 
   const navigate = useNavigate()
@@ -17,6 +20,11 @@ export default function Diary({ selectedPlace, setSelectedPlace }) {
 
   const handleCloseClick = () => {
     setSelectedPlace(null)
+  }
+
+  const handleLoveClick = (e) => {
+    e.stopPropagation()
+    setLoved(!loved)
   }
 
   return (
@@ -39,9 +47,14 @@ export default function Diary({ selectedPlace, setSelectedPlace }) {
       </button>
       <section className={styles.image}></section>
       <section className={styles.place_info}>
-        <div className={styles.wrap_name}>
-          <h2 className={styles.place_name}>{selectedPlace.place_name}</h2>
-          <p className={styles.category_name}>{categoryName}</p>
+        <div className={styles.wrap}>
+          <div className={styles.wrap_name}>
+            <h2 className={styles.place_name}>{selectedPlace.place_name}</h2>
+            <p className={styles.category_name}>{categoryName}</p>
+          </div>
+          <button className={styles.btn} onClick={handleLoveClick}>
+            {loved ? <GoHeartFill className={styles.icon_heart} /> : <GoHeart className={styles.icon_heart} />}
+          </button>
         </div>
         <p className={styles.address_name}>
           <MdLocationOn className={styles.icon} />
