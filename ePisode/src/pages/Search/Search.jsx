@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { motion } from 'framer-motion'
+import Lottie from 'react-lottie'
+import animationData from '../../assets/lotties/no.json'
 import { FaSearch } from 'react-icons/fa'
 import styles from './Search.module.css'
 import SearchCard from '../../components/Card/SearchCard'
+import { searchPlaces } from '../../services/searchPlaces'
 
 export default function Search() {
-  const apiKey = import.meta.env.VITE_KAKAO_REST_API_KEY
-  const headers = new Headers({ Authorization: `KakaoAK ${apiKey}` })
-
   const [keyword, setKeyword] = useState('')
-  const [searchAttempted, setSearchAttempted] = useState(false)
 
   const {
     data: places = [],
@@ -19,27 +18,14 @@ export default function Search() {
     isLoading,
   } = useQuery({
     queryKey: ['places', keyword],
-    queryFn: async () => {
-      if (!keyword.trim()) {
-        throw new Error('검색어를 입력해주세요!')
-      }
-
-      setSearchAttempted(true)
-
-      const response = await fetch(`https://dapi.kakao.com/v2/local/search/keyword.json?query=${keyword}`, {
-        headers,
-      })
-
-      if (!response.ok) {
-        throw new Error('검색 결과를 가져오는데 실패했습니다.')
-      }
-
-      const data = await response.json()
-      return data.documents
-    },
+    queryFn: () => searchPlaces(keyword),
     enabled: false,
+    onSuccess: () => setSearchAttempted(true),
+    onError: (error) => {
+      console.error(error.message)
+      setSearchAttempted(true)
+    },
   })
-
   const handleSearch = async () => {
     if (!keyword.trim()) {
       alert('검색어를 입력해주세요!')
@@ -69,6 +55,15 @@ export default function Search() {
     }),
   }
 
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
+
   return (
     <motion.div
       className={styles.wrap}
@@ -84,7 +79,7 @@ export default function Search() {
       </div>
       <div className={styles.wrap_card}>
         {isLoading && <p>로딩 중...</p>}
-        {!isLoading && searchAttempted && places.length === 0 && <p>검색 결과가 없습니다.</p>}
+        {places.length === 0 && !isLoading && <Lottie style={{ pointerEvents: 'none', position: 'relative' }} options={defaultOptions} height={250} width={250} />}
         {places.map((place, index) => (
           <motion.div custom={index} variants={cardVariants} initial="hidden" animate="visible" key={place.id}>
             <SearchCard
