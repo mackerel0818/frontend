@@ -95,14 +95,14 @@
 }
 
 .info {
-  color: rgb(64, 64, 64);
+  color: rgb(112, 112, 112);
 }
 .message {
   color: rgb(228, 228, 228);
 }
 .github {
   font-size: 1.8em;
-  color: rgb(64, 64, 64);
+  color: rgb(112, 112, 112);
 }
 .github:hover {
   transition: all 0.5s;

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const useMap = (mapRef, apiKey, setSelectedPlace) => {
+const useMap = (mapRef, apiKey, setSelectedPlace, selectedPlace) => {
   useEffect(() => {
     const mapScript = document.createElement('script')
 
@@ -28,9 +28,25 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
           const zoomControl = new window.kakao.maps.ZoomControl()
           map.addControl(zoomControl, window.kakao.maps.ControlPosition.RIGHT)
 
-          var marker = new window.kakao.maps.Marker({
-            position: locPosition,
-          })
+          var marker = new window.kakao.maps.Marker({})
+
+          if (selectedPlace) {
+            console.log(selectedPlace)
+            const selectedLocation = new window.kakao.maps.LatLng(selectedPlace.place.y, selectedPlace.place.x)
+            marker.setPosition(selectedLocation)
+            marker.setMap(map)
+            map.setCenter(selectedLocation)
+
+            const placeFallback = {
+              place_name: selectedPlace.place.place_name,
+              address_name: selectedPlace.place.road_address_name || selectedPlace.place.address_name,
+              category_name: selectedPlace.place.category_name,
+              x: selectedPlace.place.x,
+              y: selectedPlace.place.y,
+            }
+
+            setSelectedPlace(placeFallback)
+          }
 
           marker.setMap(map)
 
@@ -56,27 +72,34 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
 
                     marker.setPosition(latlng)
                     marker.setMap(map)
-
-                    const content = `<div class="bAddr" style="padding: 15px; background: rgba(255, 255, 255, 0.7); border-radius: 6px; border: 1px solid #ccc;">
-                                      <span class="title" style="font-weight: bold;">${place.place_name}</span>
-                                      <div>주소: ${place.address_name}</div>
-                                      <div>전화번호: ${place.phone}</div>
-                                    </div>`
-
-                    currentOverlay = new window.kakao.maps.CustomOverlay({
-                      content: content,
-                      position: latlng,
-                      xAnchor: 0.5,
-                      yAnchor: 1.5,
-                    })
-
-                    currentOverlay.setMap(map)
                   } else {
-                    setSelectedPlace(null)
+                    // 장소 검색 실패 or 결과 없을 때 사용자가 클릭한 위치 기본 정보 설정!
+                    const placeFallback = {
+                      place_name: detailAddr,
+                      address_name: detailAddr,
+                      category_name: '',
+                      x: latlng.getLng(),
+                      y: latlng.getLat(),
+                    }
+                    setSelectedPlace(placeFallback)
+
+                    marker.setPosition(latlng)
+                    marker.setMap(map)
                   }
                 })
               } else {
-                setSelectedPlace(null)
+                // 좌표를 주소로 변환할 수 없는 경우
+                const placeFallback = {
+                  place_name: '알 수 없는 장소',
+                  address_name: '알려지지 않음',
+                  category_name: '',
+                  x: latlng.getLng(),
+                  y: latlng.getLat(),
+                }
+                setSelectedPlace(placeFallback)
+
+                marker.setPosition(latlng)
+                marker.setMap(map)
               }
             })
           })
@@ -112,7 +135,7 @@ const useMap = (mapRef, apiKey, setSelectedPlace) => {
     return () => {
       mapScript.onload = null
     }
-  }, [mapRef, apiKey, setSelectedPlace])
+  }, [mapRef, apiKey, setSelectedPlace, selectedPlace])
 }
 
 export default useMap
