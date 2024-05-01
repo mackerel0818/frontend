@@ -5,20 +5,22 @@ import SideBar from '../../components/SideBar/SideBar'
 import Diary from '../../components/Diary/Diary'
 import { Outlet } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
+import { useSelectedPlace } from '../../contexts/SelectedPlaceContext'
 
 export default function MapPage() {
+  const { selectedPlace } = useSelectedPlace()
   const mapRef = useRef(null)
   const apiKey = import.meta.env.VITE_KAKAO_API_KEY
-  const [selectedPlace, setSelectedPlace] = useState(null)
+  const [userSelectedPlace, setUserSelectedPlace] = useState(null)
 
-  useMap(mapRef, apiKey, setSelectedPlace)
+  useMap(mapRef, apiKey, setUserSelectedPlace, selectedPlace)
 
   return (
     <>
       <SideBar />
       <div className={styles.mapContainer}>
         <div ref={mapRef} className={styles.map} id="map"></div>
-        <AnimatePresence>{selectedPlace && <Diary selectedPlace={selectedPlace} />}</AnimatePresence>
+        <AnimatePresence>{userSelectedPlace && <Diary selectedPlace={userSelectedPlace} setSelectedPlace={setUserSelectedPlace} />}</AnimatePresence>
         <Outlet />
       </div>
     </>
