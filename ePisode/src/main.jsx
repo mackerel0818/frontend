@@ -12,13 +12,14 @@ import Login from './pages/Login/Login'
 import RequireAuth from './components/RequireAuth/RequireAuth'
 import MapPage from './pages/MapPage/MapPage'
 import MyPage from './pages/MyPage/MyPage'
+import MyPageEdit from './pages/MyPage/MyPageEdit'
 import AddEpisode from './pages/AddEpisode/AddEpisode'
 import Search from './pages/Search/Search'
 import Recommend from './pages/Recommend/Recommend'
 import Analysis from './pages/Analysis/Analysis'
-import { SelectedPlaceProvider } from './contexts/SelectedPlaceContext'
 import Like from './pages/Like/Like'
 import Bookmark from './pages/Bookmark/Bookmark'
+import { SelectedPlaceProvider } from './contexts/SelectedPlaceContext'
 
 const queryClient = new QueryClient()
 
@@ -32,6 +33,19 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
 
+
+        <Route
+          path="/map"
+          element={
+            <RequireAuth>
+              <MapPage />
+            </RequireAuth>
+          }
+        >
+          <Route path="new" element={<AddEpisode />} />
+          <Route path="mypage" element={<MyPage />} />
+          <Route path="profileedit" element={<MyPageEdit/>} />
+        </Route>
             <Route
               path="/map"
               element={
