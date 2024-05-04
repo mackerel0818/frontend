@@ -1,0 +1,118 @@
+.wrap_about {
+  width: 100%;
+  height: 150vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.about1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.about2 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  width: 50%;
+  height: 80%;
+  margin-right: 3%;
+  background-image: url('https://res.cloudinary.com/dnbf7czsn/image/upload/v1712749715/KakaoTalk_20240410_204645667_ltetdd.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.desc {
+  width: 30%;
+  height: 80%;
+  margin-right: 20%;
+  border-top: 3px solid black;
+  padding-top: 0.9em;
+}
+
+.title {
+  font-size: 6em;
+  font-weight: bold;
+}
+.tag {
+  margin: 0.9em 0;
+  font-size: 1.5em;
+  font-family: 'Noto Serif KR', serif;
+}
+.explain {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  text-align: justify;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.image2 {
+  width: 50%;
+  height: 80%;
+  margin-left: 3%;
+  background-image: url('https://res.cloudinary.com/dnbf7czsn/image/upload/v1712749715/KakaoTalk_20240410_204656560_jgs3ke.png');
+  background-size: cover;
+}
+
+.desc2 {
+  width: 30%;
+  height: 80%;
+  margin-left: 20%;
+  border-top: 3px solid black;
+  padding-top: 0.9em;
+}
+
+.title2 {
+  font-size: 6em;
+  font-weight: bold;
+  text-align: end;
+}
+.tag2 {
+  margin: 0.9em 0;
+  font-size: 1.5em;
+  font-family: 'Noto Serif KR', serif;
+  text-align: end;
+}
+.explain2 {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  text-align: justify;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.wrap_contact {
+  background-color: #1d1d1d;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.info {
+  color: rgb(112, 112, 112);
+}
+.message {
+  color: rgb(228, 228, 228);
+}
+.github {
+  font-size: 1.8em;
+  color: rgb(112, 112, 112);
+}
+.github:hover {
+  transition: all 0.5s;
+  font-size: 1.8em;
+  color: rgb(228, 228, 228);
+}
+
+.email {
+  margin-left: 0.5em;
+  color: rgb(228, 228, 228);
+  text-decoration: underline;
+  text-underline-position: under;
+}

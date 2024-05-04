@@ -1,0 +1,10 @@
+{
+  "signup": [
+    { "name": "kim", "email": "test@gmail.com", "password": 8888 },
+    { "name": "lim", "email": "test2@gmail.com", "password": 2222 }
+  ],
+  "auth": [
+    { "email": "test@gmail.com", "password": 8888 },
+    { "email": "test2@gmail.com", "password": 2222 }
+  ]
+}
