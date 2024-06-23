@@ -1,0 +1,63 @@
+.wrap {
+  width: 400px;
+  height: 100vh;
+
+  background: linear-gradient(161.66deg, rgba(255, 255, 255, 0.18) 5.63%, rgba(255, 255, 255, 0.6) 94.57%);
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(30px);
+  border-radius: 25px;
+
+  display: flex;
+  flex-direction: column;
+  padding: 20px 25px;
+
+  overflow-y: hidden;
+}
+
+.category {
+  margin: 10px 0px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.wrap_input {
+  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.838);
+  border: 1px solid #e8e8e8;
+
+  width: 100%;
+  border-radius: 10px;
+  height: 2.5em;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  font-size: 1em;
+  width: 100%;
+  margin-left: 10px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+#search_icon {
+  color: #ff70a6;
+}
+
+.wrap_card {
+  height: 90%;
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+
+  /* 스크롤바 숨기기: Chrome, Safari, Edge */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

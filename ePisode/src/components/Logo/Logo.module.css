@@ -1,0 +1,14 @@
+.logo {
+  width: 250px;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+}
+
+.dot {
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+}

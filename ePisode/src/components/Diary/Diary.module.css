@@ -1,0 +1,282 @@
+.close_diary {
+  display: flex;
+  align-items: center;
+  padding-left: 7px;
+
+  position: absolute;
+  right: 0;
+  background: linear-gradient(201.22deg, rgba(255, 255, 255, 0.48) 4%, rgba(255, 255, 255, 0.6) 51.07%, rgba(255, 255, 255, 0) 101.08%);
+  border-radius: 10px 0px 0px 10px;
+  backdrop-filter: blur(10px);
+
+  border: none;
+
+  font-size: 2em;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+
+  color: rgb(0, 0, 0);
+}
+.close_diary:hover {
+  transition: 0.2s;
+  color: #ff70a6;
+}
+
+.selectedPlaceInfo {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 400px;
+  height: 100vh;
+  background: linear-gradient(201.22deg, rgba(255, 255, 255, 0.48) 4%, rgba(255, 255, 255, 0.6) 51.07%, rgba(255, 255, 255, 0) 101.08%);
+  box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.1), -50px 50px 200px rgba(255, 255, 255, 0.15), inset 0px 10px 50px rgba(255, 255, 255, 0.5), inset 0px 4px 200px rgba(255, 255, 255, 0.25),
+    inset -5px -5px 20px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+
+  border-radius: 25px 0px 0px 25px;
+  z-index: 1000;
+
+  overflow: hidden;
+}
+
+.school {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715347511/School_q4vkz6.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.movie {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715349576/movie_uz4cbn.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.cafe {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715349853/cafe_hmb94k.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.station {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715350058/station_gbsqaq.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.hospital {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715350376/hospital_emga5t.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.mart {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715350756/mart_zjw7pe.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.department {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715350763/department_rt0rdp.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.park {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715352514/park_akblol.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.busstop {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715608498/busstop_xjb7qg.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.museum {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715608864/museum_wfk9hq.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.default {
+  width: 100%;
+  height: 25%;
+  background-image: url(https://res.cloudinary.com/dphqcgdhh/image/upload/v1715608322/logo_h1oj3l.png);
+  background-position: center;
+  background-size: cover;
+  background-color: white;
+}
+
+.place_info {
+  margin: 30px 35px;
+}
+.wrap {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+.wrap_name {
+  display: flex;
+  margin-bottom: 15px;
+}
+.place_name {
+  cursor: pointer;
+  font-size: 1.7em;
+  font-weight: bold;
+}
+.category_name {
+  margin-top: 2px;
+  padding-left: 3px;
+  color: #636363;
+}
+
+.address_name {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #4b4b4b;
+}
+.icon {
+  color: #ff70a6;
+  font-size: 1.4em;
+  margin-right: 3px;
+}
+
+.diary {
+  height: 36%;
+  margin: 20px 40px;
+  overflow-y: scroll;
+
+  scrollbar-width: none;
+
+  /* 스크롤바 숨기기: Chrome, Safari, Edge */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.episodes {
+  display: flex;
+  flex-direction: column;
+}
+
+.add_episode {
+  width: 320px;
+  height: 65px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid #e8e8e8;
+  border-radius: 15px;
+  margin: 0px 40px;
+  cursor: pointer;
+}
+.add_episode:hover {
+  transition: 0.3s;
+  background-color: rgb(255, 255, 255);
+}
+.add_episode:hover .plus_btn {
+  transition: 0.3s;
+  color: #ff70a6;
+}
+.plus_btn {
+  color: #4b4b4b;
+  margin-top: -5px;
+  font-size: 2.5em;
+}
+
+.toggleWrapper {
+  display: flex;
+  justify-content: end;
+  margin: 15px 35px;
+}
+
+.toggleButton {
+  height: 38px;
+  text-align: center;
+  margin: 0 3px;
+  border: solid #999999 2px;
+  border-radius: 20px;
+  padding: 0 10px;
+  background-color: transparent;
+  color: #4b4b4b;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggleButton:hover {
+  border: solid #ff70a6 2px;
+  color: #ff70a6;
+}
+
+.toggleButton.active {
+  border: solid #ff70a6 2px;
+  color: #ff70a6;
+}
+
+.episode {
+  height: 65px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid #e8e8e8;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 0px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #333333;
+
+  cursor: pointer;
+  overflow: hidden;
+}
+.episode:hover {
+  transition: 0.3s;
+  background-color: rgb(255, 255, 255);
+  transition: 0.3s;
+  color: #ff70a6;
+}
+
+.btn {
+  background: none;
+  border: none;
+  padding: none;
+}
+.icon_heart {
+  font-size: 2.2em;
+  color: #ff3783;
+  cursor: pointer;
+}
+.btn:hover {
+  transition: 0.3s;
+  scale: 1.1;
+}
+
+.wrap_username {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  line-height: 1.3;
+}
+.username {
+  font-size: 0.5em;
+}
